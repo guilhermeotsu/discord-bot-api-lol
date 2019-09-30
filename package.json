@@ -1,0 +1,14 @@
+{
+  "name": "lolzeiro",
+  "version": "1.0.0",
+  "description": "discord bot that interacts with LoL API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme Otsu",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
