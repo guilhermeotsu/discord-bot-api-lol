@@ -1,32 +1,44 @@
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const { Client, Attachment } = require('discord.js');
+const fs = require('fs'); // pacote do node (file system) para manipular os arquivos do commands
+const { Client, Collection } = require('discord.js');
+const client = new Client();
+client.commands = new Collection();
 
 const { discordToken } = require('./config.json');
+
+/**
+ * arquivos do commands, vai ler todos os arquivos da pasta commands 
+ */
+const commandFiles = fs.readdirSync('./commands');
+
+
+for(const file of commandFiles) { 
+    const command = require(`./commands/${file}`);
+
+
+    // guardando valor dentro da collection
+    client.commands.set(command.name, command);
+}
+
 
 client.on('ready', function() { 
     console.log('Ready');
 })
 
+
 client.on('message', message => { 
-    if(message.content === '!ping')
-    {
-        message.reply('com .reply: pong');
-        message.channel.send('sem reply: pong');
-    } else if(message.content === '!server')
-    {
-        message.channel.send(
-        `O nome do servidor é ${message.guild.name}`
-        )
-    } else if(message.content === '!rip') { 
-        const attachment = new Attachment('https://i.imgur.com/w3duR07.png');
-        message.channel.send(attachment);
-    } else if (message.content.startsWith("!maiuscula"))
-    {
-        const args = message.split(' ');
-        const command = args.shift();  
-        const response = args.join(' ');
-        message.channel.send(response.toUpperCase);
+   const args = message.content.split(' ');
+   const commandName = args.shift(); // tira o primeiro elemento e armazena na variável do array criado acima
+
+    if(!client.commands.has(commandName)) return;
+
+    const command = client.commands.get(commandName);
+
+    try { 
+        command.execute(message, args)
+    }
+    catch(error) {
+        console.error(error);
+        message.reply('Um erro aconteceu ao tentar executar o comando');
     }
 });
 
