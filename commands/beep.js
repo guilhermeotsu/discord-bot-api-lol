@@ -1,3 +1,5 @@
+// ok
+
 module.exports = {
     name: '!beep',
     execute(message, args)  {
