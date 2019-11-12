@@ -1,4 +1,5 @@
 { 
-    "discordToken": "NjI4MzYwNTQyNzE2NjkwNDYz.XZPuTw.cYtedSeJ5x0mDsV5AzLYI5nmx7E",
-    "riotAPIKey": "RGAPI-d255e737-7502-4bb1-bf84-16104cbbeef1"
+    "discordToken": "NjI4MzYwNTQyNzE2NjkwNDYz.XZkPPg.jH-dFswnoqpNS_61jr0s3OVSOyw",
+    "riotAPIKey": "RGAPI-d255e737-7502-4bb1-bf84-16104cbbeef1",
+    "climatempoAPIKey": "d2729de0ed24b32fe597814f9389109a"
 }

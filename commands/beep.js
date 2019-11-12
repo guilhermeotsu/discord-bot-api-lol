@@ -1,7 +1,7 @@
 module.exports = {
     name: '!beep',
     execute(message, args)  {
-        const { RichEmbed} = require('discord.js');
+        const { RichEmbed } = require('discord.js');
         const embed = new RichEmbed()
             .setTitle('Titulo do Embed')
             .setDescription('Aqui vai a descrição do Embed')
